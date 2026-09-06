@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+
+// Educational, reusable plant info
+model Plant {
+  id          Int          @id @default(autoincrement())
+  commonName  String
+  latinName   String?
+  careGuide   String?      // Light, water, humidity requirements
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  listings    Listing[]    // One plant can have many sale listings
+}
+
+// Specific inventory items listed for sale
+model Listing {
+  id          Int          @id @default(autoincrement())
+  title       String
+  description String
+  price       Decimal      @db.Decimal(10, 2)
+  status      String       @default("available") // available, sold, reserved
+  plantId     Int
+  plant       Plant        @relation(fields: [plantId], references: [id])
+  images      Image[]
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}
+
+// Stored image URLs for listing items
+model Image {
+  id        Int      @id @default(autoincrement())
+  url       String
+  listingId Int
+  listing   Listing  @relation(fields: [listingId], references: [id], onDelete: Cascade)
+}
