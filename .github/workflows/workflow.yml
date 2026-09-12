@@ -45,7 +45,7 @@ jobs:
 
       - name: Run Prisma Migrations
         env:
-          DATABASE_URL: "postgresql://postgres:password123@localhost:5432/theresa_squirrel_db_test?schema=public"
+          DATABASE_URL: "postgresql://${{secrets.POSTGRESUSER }}:${{secrets.POSTGRESPASSWORD }}@localhost:5432/${{secrets.POSTGRESDB }}?schema=public"
         run: npx prisma migrate deploy
 
       - name: Build TypeScript Project
