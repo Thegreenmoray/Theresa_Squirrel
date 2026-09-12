@@ -4,3 +4,8 @@ run:
 
 clrftolf:
  find . -type f -not -path '*/.git*' -exec dos2unix {} +
+
+up:
+ docker compose up
+down:
+ docker compose down
