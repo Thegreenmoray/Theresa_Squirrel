@@ -22,7 +22,7 @@ jobs:
           - 5432:5432
         # Health check to ensure Postgres is fully up before running steps
         options: >-
-          --health-cmd psql-U-dtheresa_squirrel_db_test-c'SELECT 1'
+          --health-cmd "psql -U postgres -d theresa_squirrel_db_test -c 'SELECT 1'"
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
