@@ -4,20 +4,20 @@ import type { TabItem } from "./tabs/Tabcontainer";
 
 const squirrelTabs: TabItem[] = [
   {
-    id: "about",
+    id: "squirrel",
     tabname: "About Squirrels",
     description:
       "Squirrels are agile, bushy-tailed rodents found all all around the globe. They are known for their acrobatic antics, incredible memory for food caches, and playful nature.",
     image: squrriel,
   },
   {
-    id: "Shop",
+    id: "shop",
     tabname: "Shop / Available Plants",
     description:
       "List of plants availibe",
   },
   {
-    id: "Plantlibary",
+    id: "plantlibary",
     tabname: "Plant Library",
     description:
       "Some facts about plants",

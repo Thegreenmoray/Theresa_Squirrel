@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { TabsProps, TabItem } from "./Tabcontainer";
+import TabsStoreMoudle from "./storemoudle";
 import "./Tabsforsqurriel.css";
 
 export default function Tabsforsqurriel({
@@ -37,7 +38,8 @@ export default function Tabsforsqurriel({
               aria-controls={panelId}
               tabIndex={isActive ? 0 : -1}
               className={`tab-button ${isActive ? "active" : ""}`}
-              onClick={() => setActiveIndex(index)}
+              onClick={() => {setActiveIndex(index)
+            }}
               onKeyDown={(e) => {
                 if (e.key === "ArrowRight") {
                   setActiveIndex((index + 1) % tabs.length);
@@ -75,6 +77,12 @@ export default function Tabsforsqurriel({
               {activeTab.content}
             </div>
           )}
+            {/* ✅ Render TabsStoreMoudle when the active tab's ID or key is "shop" */}
+            {(activeTab.id === "shop" || activeTab.tabname?.toLowerCase() === "shop") && (
+                <div className="mt-6">
+                    <TabsStoreMoudle />
+                </div>
+            )}
         </div>
       )}
     </div>

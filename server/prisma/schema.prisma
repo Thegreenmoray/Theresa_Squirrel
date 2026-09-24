@@ -19,7 +19,7 @@ model Plant {
   commonName  String
   latinName   String?
   careGuide   String? // Light, water, humidity requirements
-  Carelevel   String
+  Carelevel   String // easy medium hard
   Environment String
   Lighting    String
   createdAt   DateTime  @default(now())
